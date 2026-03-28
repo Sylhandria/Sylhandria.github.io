@@ -129,8 +129,28 @@ hr.rule{border:none;border-top:0.5px solid var(--border);margin:3rem 0;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.35;}}
 .proj-card p{font-size:0.87rem;margin-top:0.6rem;}
 .proj-tech{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.25rem;}
-.collage-ph{border:0.5px dashed var(--border);padding:3rem 2rem;text-align:center;margin-top:1.5rem;}
-.collage-ph p{font-size:0.85rem;color:var(--ink-light);}
+/* COLLAGE SECTION */
+.collage {
+  margin-top: 1.5rem;
+  border: 0.5px solid var(--border);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+  overflow: hidden;
+  border-radius: 6px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.collage img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.collage:hover {
+  transform: scale(1.01);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
 
 /* CONTACT */
 .contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:5rem;align-items:start;}
@@ -333,7 +353,7 @@ footer p{font-size:0.76rem;color:var(--ink-light);}
     <p style="max-width:640px;">Outside of research I enjoy constantly finding new places to explore, baking, and playing tabletop games. At home, I can be found sipping on my most recent coffee creation while making sure my cat doesn't knock everything off my tables.</p>
     <hr class="rule" />
     <span class="label">Life Outside Science</span>
-    <div class="collage-ph"><p>Photo collage coming soon -- conferences, travel, and everything in between.</p></div>
+    <div class="collage"><img src="images/collage.jpg" alt="Photo collage of conferences, travel, and life outside the lab" /></div>
   </div>
 </div>
 
