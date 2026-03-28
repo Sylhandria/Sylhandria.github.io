@@ -345,19 +345,36 @@ footer p{font-size:0.76rem;color:var(--ink-light);}
       <span class="label">Contact</span>
       <h2>Get in touch</h2>
       <p>I welcome correspondence about research collaborations or questions about my work.</p>
-      <a href="mailto:frame.jessica-frame@uiowa.edu" class="contact-email">jessica-frame@uiowa.edu</a>
+      <a href="mailto:jessica-frame@uiowa.edu" class="contact-email">jessica-frame@uiowa.edu</a>
       <div class="ext-links">
         <a href="https://orcid.org/0000-0001-7140-4510" target="_blank">ORCID</a>
         <a href="https://github.com/Sylhandria" target="_blank">GitHub</a>
       </div>
     </div>
-    <form id="contact-form">
-      <div class="form-group"><label for="fname">Name</label><input type="text" id="fname" placeholder="Your name" required /></div>
-      <div class="form-group"><label for="femail">Email</label><input type="email" id="femail" placeholder="your@email.com" required /></div>
-      <div class="form-group"><label for="fmsg">Message</label><textarea id="fmsg" placeholder="Your message..." required></textarea></div>
-      <button type="submit" class="btn btn-dark" style="width:100%;justify-content:center;">Send Message</button>
-      <p id="form-ok" style="display:none;margin-top:1rem;color:var(--teal);font-size:0.9rem;text-align:center;">Message sent -- I will be in touch soon.</p>
-      <p style="margin-top:0.75rem;font-size:0.71rem;color:var(--ink-light);text-align:center;">Connect to <a href="https://formspree.io" target="_blank" style="color:var(--teal);text-decoration:none;">Formspree</a> to receive messages by email.</p>
+    <form id="contact-form" action="https://formspree.io/f/xzdkdkrn" method="POST">
+      <!-- optional subject -->
+      <input type="hidden" name="_subject" value="New message from personal website">
+      <div class="form-group">
+        <label for="fname">Name</label>
+        <input type="text" id="fname" name="name" placeholder="Your name" required />
+      </div>
+      <div class="form-group">
+        <label for="femail">Email</label>
+        <input type="email" id="femail" name="email" placeholder="your@email.com" required />
+      </div>
+      <div class="form-group">
+        <label for="fmsg">Message</label>
+        <textarea id="fmsg" name="message" placeholder="Your message..." required></textarea>
+      </div>
+      <button type="submit" class="btn btn-dark" style="width:100%;justify-content:center;">
+        Send Message
+      </button>
+      <p id="form-ok" style="display:none;margin-top:1rem;color:var(--teal);font-size:0.9rem;text-align:center;">
+        Message sent — I will be in touch soon.
+      </p>
+      <p style="margin-top:0.75rem;font-size:0.71rem;color:var(--ink-light);text-align:center;">
+        Powered by <a href="https://formspree.io" target="_blank" style="color:var(--teal);text-decoration:none;">Formspree</a>
+      </p>
     </form>
   </div>
 </div>
@@ -427,16 +444,27 @@ footer p{font-size:0.76rem;color:var(--ink-light);}
     });
   }
 
-  // contact form
+  // contact form (Formspree AJAX)
   var form = document.getElementById("contact-form");
   if (form) {
-    form.addEventListener("submit", function(e) {
+    form.addEventListener("submit", async function(e) {
       e.preventDefault();
-      document.getElementById("form-ok").style.display = "block";
-      this.reset();
+      const data = new FormData(form);
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: data,
+        headers: {
+          "Accept": "application/json"
+        }
+      });
+      if (response.ok) {
+        document.getElementById("form-ok").style.display = "block";
+        form.reset();
+      } else {
+        alert("There was a problem sending your message. Please try again.");
+      }
     });
   }
-
   // init: hide all, show home via JS so display type is controlled entirely by JS
   showPage("home");
 })();
