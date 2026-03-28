@@ -56,6 +56,11 @@ hr.rule{border:none;border-top:0.5px solid var(--border);margin:3rem 0;}
 .btn-out{background:transparent;color:var(--ink);border:1px solid rgba(24,24,26,0.25);}
 .btn-out:hover{border-color:var(--teal);color:var(--teal);}
 
+/* PROFILE IMAGE */
+.profile-pic {width: 170px; height:170px; margin: 0 auto 2rem auto; border-radius: 50%; overflow: hidden; border: 1.5px solid var(--border); box-shadow: 0 6px 24px rgba(0,0,0,0.08);}
+.profile-pic img {width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.35s ease;}
+.profile-pic:hover img {transform: scale(1.06);}
+  
 /* HOME */
 .hero-meta{font-size:0.8rem;letter-spacing:0.1em;color:var(--ink-light);text-transform:uppercase;margin-bottom:1.5rem;}
 .divider{width:48px;height:1.5px;background:var(--teal);margin:2rem 0;}
@@ -178,10 +183,15 @@ footer p{font-size:0.76rem;color:var(--ink-light);}
 <!-- HOME -->
 <div class="page" id="page-home">
 <div class="inner">
+  <div class="profile-pic">
+    <img src="images/profile_photo.jpg" alt="Jessica Frame" />
+  </div>
   <p class="hero-meta">Doctoral Student &middot; Cognitive Neuroscientist &middot; University of Iowa</p>
-  <h1>Jessica<br><em>Frame</em></h1>
+  <h1><em>Jessica Frame</em></h1>
   <div class="divider"></div>
-  <p class="tagline">I'm Jess, a neuroscience researcher trained in human subjects work and experimental methods. Currently, I am in my second year of pursuing my Ph.D. in Neuroscience at the University of Iowa under the tutelage of Dr. Michelle Voss where my research focus revolves around our current methods of understanding the underlying functional networks in healthy aging brains.</p>
+  <p class="tagline">
+    I'm Jess, a neuroscience researcher trained in human subjects work and experimental methods. Currently, I am in my second year of pursuing my Ph.D. in Neuroscience at the University of Iowa under the tutelage of Dr. Michelle Voss where my research focus revolves around our current methods of understanding the underlying functional networks in healthy aging brains.
+  </p>
   <div class="hero-btns">
     <button class="btn btn-dark" data-page="research">View Research</button>
     <a href="CV_Frame_26.pdf" class="btn btn-out" download>Download CV</a>
